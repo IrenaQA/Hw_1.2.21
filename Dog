@@ -1,0 +1,19 @@
+
+package com.company;
+
+public class Dog {
+    String name;
+    int age;
+    String breed;
+
+    public Dog() {
+    }
+
+    public void bark() {
+        System.out.println("woof woof " + this.name);
+    }
+
+    public String toString() {
+        return "Dog{name='" + this.name + "', age=" + this.age + ", breed='" + this.breed + "'}";
+    }
+}
