@@ -1,0 +1,43 @@
+package com.company;
+
+public class BankAccount {
+    String ownerName;
+    double balance;
+    int creditScore;
+    boolean ifFrozen;
+
+    public BankAccount(String ownerName, double balance, int creditScore, boolean ifFrozen) {
+        this.ownerName = ownerName;
+        this.balance = balance;
+        this.creditScore = creditScore;
+        this.ifFrozen = ifFrozen;
+    }
+
+    public void withdraw(double amount) {
+        if (!this.ifFrozen && this.balance >= -50000.0D) {
+            this.balance -= amount;
+        } else {
+            System.out.println("Account is frozen!");
+        }
+
+    }
+
+    public void deposit(double amount) {
+        this.balance += amount;
+    }
+
+    public void checkBalance() {
+        if (this.balance < -10000.0D) {
+            this.creditScore -= 10;
+        }
+
+        if (this.balance <= 50000.0D) {
+            this.ifFrozen = true;
+        }
+
+    }
+
+    public String toString() {
+        return "BankAccount{ownerName='" + this.ownerName + "', balance=" + this.balance + ", creditScore=" + this.creditScore + ", ifFrozen=" + this.ifFrozen + "}";
+    }
+}
