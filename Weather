@@ -1,0 +1,53 @@
+
+package com.company;
+
+import java.util.Scanner;
+
+public class Weather {
+    Scanner s;
+    float temperature;
+    int humidityPercentage;
+    boolean cloudy;
+    int chanceOfRain;
+
+    public Weather(float temperature, int humidityPercentage, boolean cloudy, int chanceOfRain) {
+        this.s = new Scanner(System.in);
+        this.temperature = temperature;
+        this.humidityPercentage = humidityPercentage;
+        this.cloudy = cloudy;
+        if (chanceOfRain >= 0 && chanceOfRain <= 100) {
+            this.chanceOfRain = chanceOfRain;
+        } else {
+            System.out.println("Please enter a number between 0-100.");
+
+            for(int temp = this.s.nextInt(); temp < 0 || temp > 100; temp = this.s.nextInt()) {
+                System.out.println("Please enter a number between 0-100.");
+            }
+        }
+
+    }
+
+    public String toString() {
+        return "Weather{temperature=" + this.temperature + ", humidityPercentage=" + this.humidityPercentage + ", cloudy=" + this.cloudy + ", chanceOfRain=" + this.chanceOfRain + "}";
+    }
+
+    public void changeChanceOfRain(int num) {
+        if (num >= 0 && num <= 100) {
+            this.chanceOfRain = num;
+        } else {
+            System.out.println("Please enter a number between 0-100.");
+
+            int temp;
+            for(temp = this.s.nextInt(); temp < 0 || temp > 100; temp = this.s.nextInt()) {
+                System.out.println("Please enter a number between 0-100.");
+            }
+
+            this.chanceOfRain = temp;
+        }
+
+    }
+
+    public void printTempFahrenheit() {
+        System.out.println(String.format("Fahrenheit: %.2f", (double)this.temperature * 1.8D + 32.0D));
+    }
+}
